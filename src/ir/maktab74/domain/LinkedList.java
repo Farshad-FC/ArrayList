@@ -24,6 +24,13 @@ public class LinkedList {
         arrayList.remove(inputInt);
     }
 
+    public void checkLinkedListisEmpty(ApplicationContext context) {
+        if (arrayList.size() == 0)
+            context.getMenu().showLinkedListIsEmptyMessage();
+        else
+            context.getMenu().showLinkedListIsNotEmptyMessage();
+    }
+
     public void searchInLinkedList(int inputInt, ApplicationContext context) {
         if (arrayList.size() != 0) {
             context.getMenu().showIndexMessage();

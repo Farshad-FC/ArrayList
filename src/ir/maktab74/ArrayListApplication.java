@@ -26,7 +26,7 @@ public class ArrayListApplication {
             }
             switch (selectedNumber) {
                 case 1:
-                    checkLinkListIsEmpty();
+                    arrayList.checkLinkedListisEmpty(context);
                     break;
                 case 3:
                 case 4:
@@ -61,13 +61,6 @@ public class ArrayListApplication {
             }
         }
         showArrayList(arrayList);
-    }
-
-    private static void checkLinkListIsEmpty() {
-        if (arrayList.size() == 0)
-            context.getMenu().showLinkedListIsEmptyMessage();
-        else
-            context.getMenu().showLinkedListIsNotEmptyMessage();
     }
 
     private static void addAndDeleteNodeAndSearchInLinkedList(int selectedNumber) {
