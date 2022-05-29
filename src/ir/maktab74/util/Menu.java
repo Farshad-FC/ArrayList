@@ -19,7 +19,8 @@ public class Menu {
 
     public void showEnterRightNumberMessage() {
         seperator();
-        System.out.println("plz enter right number.");
+        System.out.println("plz enter right value.");
+        seperator();
     }
 
     public void seperator(){
@@ -52,5 +53,22 @@ public class Menu {
 
     public void showEnterIndexLinkedListMessage() {
         System.out.print("plz enter index for delete: ");
+    }
+
+    public void showIndexLinkedList(int index) {
+        System.out.print(index + "\t");
+    }
+
+    public void showIndexMessage() {
+        System.out.print("index : ");
+    }
+
+    public void getNextLine() {
+        System.out.println();
+    }
+
+    public void showLinkedListIsEmptyMessage() {
+        seperator();
+        System.out.println("LinkedList is empty.");
     }
 }

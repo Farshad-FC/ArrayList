@@ -27,9 +27,13 @@ public class ArrayListApplication {
             switch (selectedNumber) {
                 case 1:
                     break;
-                case 2:
                 case 3:
                 case 4:
+                    if (arrayList.size() == 0) {
+                        context.getMenu().showLinkedListIsEmptyMessage();
+                        break;
+                    }
+                case 2:
                     addAndDeleteNodeAndSearchInLinkedList(selectedNumber);
                     break;
                 case 5:
@@ -52,9 +56,13 @@ public class ArrayListApplication {
                     arrayList.addNodeToLinkedList(inputInt);
                     break;
                 case 3:
-                    arrayList.deleteNodeFromLinkedList(inputInt);
+                    if (inputInt <= arrayList.size())
+                        arrayList.deleteNodeFromLinkedList(inputInt);
+                    else
+                        context.getMenu().showEnterRightNumberMessage();
                     break;
                 case 4:
+                    arrayList.searchInLinkedList(inputInt, context);
                     break;
             }
 
