@@ -17,4 +17,8 @@ public class LinkedList {
     public void addNodeToLinkedList(int input){
         arrayList.add(input);
     }
+
+    public void deleteNodeFromLinkedList(int inputInt) {
+        arrayList.remove(inputInt-1);
+    }
 }

@@ -8,9 +8,9 @@ public class Menu {
 
     public void showFirstMenuMessage() {
         seperator();
-        System.out.println("1: add node to LinkedList");
-        System.out.println("2: delete node from LinkedList");
-        System.out.println("3: check that the LinkedList is empty");
+        System.out.println("1: check that the LinkedList is empty");
+        System.out.println("2: add node to LinkedList");
+        System.out.println("3: delete node from LinkedList");
         System.out.println("4: search in LinkedList");
         System.out.println("5: Remove improperly arranged pairs");
         System.out.println("6: exit");
@@ -48,5 +48,9 @@ public class Menu {
 
     public void showLastCaracterArrayList() {
         System.out.println("}");
+    }
+
+    public void showEnterIndexLinkedListMessage() {
+        System.out.print("plz enter index for delete: ");
     }
 }

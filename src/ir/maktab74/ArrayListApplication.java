@@ -3,8 +3,6 @@ package ir.maktab74;
 import ir.maktab74.domain.LinkedList;
 import ir.maktab74.util.ApplicationContext;
 
-import java.util.ArrayList;
-
 public class ArrayListApplication {
     public static ApplicationContext context = new ApplicationContext();
     public static LinkedList arrayList = new LinkedList();
@@ -28,13 +26,11 @@ public class ArrayListApplication {
             }
             switch (selectedNumber) {
                 case 1:
-                    addNodeToLinkedList();
                     break;
                 case 2:
-                    break;
                 case 3:
-                    break;
                 case 4:
+                    addAndDeleteNodeAndSearchInLinkedList(selectedNumber);
                     break;
                 case 5:
                     break;
@@ -45,24 +41,61 @@ public class ArrayListApplication {
         }
     }
 
-    private static void addNodeToLinkedList() {
-        loop:
+    private static void addAndDeleteNodeAndSearchInLinkedList(int selectedNumber) {
         while (true) {
-            String inputString = getInputFromUser();
+            String inputString = getInputFromUser(selectedNumber);
             if (inputString.equals("exit"))
-                break loop;
+                break;
             int inputInt = Integer.parseInt(inputString);
-            arrayList.addNodeToLinkedList(inputInt);
+            switch (selectedNumber) {
+                case 2:
+                    arrayList.addNodeToLinkedList(inputInt);
+                    break;
+                case 3:
+                    arrayList.deleteNodeFromLinkedList(inputInt);
+                    break;
+                case 4:
+                    break;
+            }
+
         }
     }
 
-    private static String getInputFromUser() {
+    /*private static void deleteNodeFromLinkedList() {
+        while (true) {
+            String inputString = getInputFromUser();
+            if (inputString.equals("exit"))
+                break;
+            int inputInt = Integer.parseInt(inputString);
+            arrayList.deleteNodeFromLinkedList(inputInt);
+        }
+    }
+
+    private static void addNodeToLinkedList() {
+        while (true) {
+            String inputString = getInputFromUser();
+            if (inputString.equals("exit"))
+                break;
+            int inputInt = Integer.parseInt(inputString);
+            arrayList.addNodeToLinkedList(inputInt);
+        }
+    }*/
+
+    private static String getInputFromUser(int selectedNumber) {
         String inputString="";
         int inputInt;
         while (true) {
             try {
                 showArrayList(arrayList);
-                context.getMenu().showEnterValueMessage();
+                switch (selectedNumber){
+                    case 3:
+                        context.getMenu().showEnterIndexLinkedListMessage();
+                        break;
+                    case 2:
+                    case 4:
+                        context.getMenu().showEnterValueMessage();
+                        break;
+                }
                 inputString = context.getStringScanner().nextLine();
                 if (inputString.equals("exit"))
                     return inputString;
