@@ -71,4 +71,9 @@ public class Menu {
         seperator();
         System.out.println("LinkedList is empty.");
     }
+
+    public void showLinkedListIsNotEmptyMessage() {
+        seperator();
+        System.out.println("LinkedList is not empty.");
+    }
 }

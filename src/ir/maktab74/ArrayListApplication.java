@@ -26,6 +26,7 @@ public class ArrayListApplication {
             }
             switch (selectedNumber) {
                 case 1:
+                    checkLinkListIsEmpty();
                     break;
                 case 3:
                 case 4:
@@ -37,12 +38,36 @@ public class ArrayListApplication {
                     addAndDeleteNodeAndSearchInLinkedList(selectedNumber);
                     break;
                 case 5:
+                    removeImproperlyArrangedPairs();
                     break;
                 case 6:
                     context.getMenu().showExitMessage();
                     break loop;
             }
         }
+    }
+
+    private static void removeImproperlyArrangedPairs() {
+        for (int count = 0; count < arrayList.size();) {
+            if(count == arrayList.size()-1)
+                arrayList.deleteNodeFromLinkedList(count);
+            else {
+                if (arrayList.get(count) > arrayList.get(count+1)){
+                    arrayList.deleteNodeFromLinkedList(count);
+                    arrayList.deleteNodeFromLinkedList(count);
+                }
+                else
+                    count+=2;
+            }
+        }
+        showArrayList(arrayList);
+    }
+
+    private static void checkLinkListIsEmpty() {
+        if (arrayList.size() == 0)
+            context.getMenu().showLinkedListIsEmptyMessage();
+        else
+            context.getMenu().showLinkedListIsNotEmptyMessage();
     }
 
     private static void addAndDeleteNodeAndSearchInLinkedList(int selectedNumber) {
@@ -57,7 +82,7 @@ public class ArrayListApplication {
                     break;
                 case 3:
                     if (inputInt <= arrayList.size())
-                        arrayList.deleteNodeFromLinkedList(inputInt);
+                        arrayList.deleteNodeFromLinkedList((inputInt-1));
                     else
                         context.getMenu().showEnterRightNumberMessage();
                     break;
@@ -68,26 +93,6 @@ public class ArrayListApplication {
 
         }
     }
-
-    /*private static void deleteNodeFromLinkedList() {
-        while (true) {
-            String inputString = getInputFromUser();
-            if (inputString.equals("exit"))
-                break;
-            int inputInt = Integer.parseInt(inputString);
-            arrayList.deleteNodeFromLinkedList(inputInt);
-        }
-    }
-
-    private static void addNodeToLinkedList() {
-        while (true) {
-            String inputString = getInputFromUser();
-            if (inputString.equals("exit"))
-                break;
-            int inputInt = Integer.parseInt(inputString);
-            arrayList.addNodeToLinkedList(inputInt);
-        }
-    }*/
 
     private static String getInputFromUser(int selectedNumber) {
         String inputString="";

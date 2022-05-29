@@ -21,7 +21,7 @@ public class LinkedList {
     }
 
     public void deleteNodeFromLinkedList(int inputInt) {
-        arrayList.remove(inputInt-1);
+        arrayList.remove(inputInt);
     }
 
     public void searchInLinkedList(int inputInt, ApplicationContext context) {
