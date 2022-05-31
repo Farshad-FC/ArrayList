@@ -12,8 +12,7 @@ public class Menu {
         System.out.println("2: add node to LinkedList");
         System.out.println("3: delete node from LinkedList");
         System.out.println("4: search in LinkedList");
-        System.out.println("5: Remove improperly arranged pairs");
-        System.out.println("6: exit");
+        System.out.println("5: exit");
         System.out.print("plz choose a number: ");
     }
 
@@ -43,11 +42,11 @@ public class Menu {
         System.out.print(", ");
     }
 
-    public void showFirstCaracterArrayList() {
+    public void showFirstCaracter() {
         System.out.print("{");
     }
 
-    public void showLastCaracterArrayList() {
+    public void showLastCaracter() {
         System.out.println("}");
     }
 
