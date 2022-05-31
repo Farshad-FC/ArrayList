@@ -3,40 +3,76 @@ package ir.maktab74.domain;
 import ir.maktab74.util.ApplicationContext;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class LinkedList {
+import static ir.maktab74.LinkedListApplication.linkedList;
 
-    private ArrayList<Integer> arrayList = new ArrayList<>();
+public class LinkedList<T> {
 
-    public int size(){
-        return arrayList.size();
+    private Node<T> first;
+    private int size;
+
+    public LinkedList() {
+        size = 0;
+        first = null;
     }
 
-    public int get(int x){
-        return arrayList.get(x);
+    public boolean isEmpty() {
+        return first == null;
     }
 
-    public void addNodeToLinkedList(int input){
-        arrayList.add(input);
+    public int size() {
+        return size;
     }
 
-    public void deleteNodeFromLinkedList(int inputInt) {
-        arrayList.remove(inputInt);
+    public void add(T t) {
+        Node newNode = new Node(t, null);
+        if (first == null) {
+            first = newNode;
+        } else {
+            Node temp = first;
+            while (temp.getNextNode() != null) {
+                temp = temp.getNextNode();
+            }
+            temp.setNextNode(newNode);
+        }
+        size++;
     }
 
-    public void checkLinkedListisEmpty(ApplicationContext context) {
-        if (arrayList.size() == 0)
-            context.getMenu().showLinkedListIsEmptyMessage();
-        else
-            context.getMenu().showLinkedListIsNotEmptyMessage();
+    public Iterator<T> iterator() {
+        return new LinkedListIterator<T>(first);
     }
 
-    public void searchInLinkedList(int inputInt, ApplicationContext context) {
-        if (arrayList.size() != 0) {
+    public void delete(T input) {
+        Node<T> deleteNode = first;
+        Node<T> prev = null;
+
+        if (deleteNode != null && deleteNode.getData() == input) {
+            first = deleteNode.getNextNode();
+            return;
+        }
+
+        while (deleteNode != null && deleteNode.getData() != input) {
+            prev = deleteNode;
+            deleteNode = deleteNode.getNextNode();
+        }
+
+        if (deleteNode == null) {
+            return;
+        }
+
+        prev.setNextNode(deleteNode.getNextNode());
+    }
+
+    public void search(T inputInt, ApplicationContext context) {
+        if (linkedList.size() != 0) {
+            Iterator iterator = linkedList.iterator();
+            int count = 1;
             context.getMenu().showIndexMessage();
-            for (int count = 0; count < arrayList.size(); count++) {
-                if (arrayList.get(count) == inputInt)
-                    context.getMenu().showIndexLinkedList(count + 1);
+            while (iterator.hasNext()) {
+                if (iterator.next() == inputInt)
+                    context.getMenu().showIndexLinkedList(count);
+                count++;
             }
             context.getMenu().getNextLine();
         } else
